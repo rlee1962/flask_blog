@@ -42,20 +42,32 @@ class UpdateAccountForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
+<<<<<<< HEAD
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+=======
     picture = FileField('Update Profile Picture', validators=[
                         FileAllowed(['jpg', 'png'])])
+>>>>>>> 6e0f1afed6491fdc02195232e3b2b6947e139cfa
     submit = SubmitField('Update')
 
     def validate_username(self, username):
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
+<<<<<<< HEAD
+                raise ValidationError('That username is taken. Please choose a different one.')
+=======
                 raise ValidationError(
                     'That username is taken. Please choose a different one.')
+>>>>>>> 6e0f1afed6491fdc02195232e3b2b6947e139cfa
 
     def validate_email(self, email):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
+<<<<<<< HEAD
+                raise ValidationError('That email is taken. Please choose a different one.')
+=======
                 raise ValidationError(
                     'That email is taken. Please choose a different one.')
+>>>>>>> 6e0f1afed6491fdc02195232e3b2b6947e139cfa
